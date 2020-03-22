@@ -1,0 +1,113 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Template for lab reports
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sets the document class for the document
+% Openany is added to remove the book style of starting every new chapter on an odd page (not needed for reports)
+\documentclass[10pt,english, openany]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Loading packages that alter the style
+\usepackage[]{graphicx}
+\usepackage[]{color}
+\usepackage{alltt}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+% Set page margins
+\usepackage[top=100pt,bottom=100pt,left=68pt,right=66pt]{geometry}
+
+% Package used for placeholder text
+\usepackage{lipsum}
+
+% Prevents LaTeX from filling out a page to the bottom
+\raggedbottom
+
+% Adding both languages
+\usepackage[english, italian]{babel}
+
+% All page numbers positioned at the bottom of the page
+\usepackage{fancyhdr}
+\fancyhf{} % clear all header and footers
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt} % remove the header rule
+\pagestyle{fancy}
+
+% Changes the style of chapter headings
+\usepackage{titlesec}
+\titleformat{\chapter}
+   {\normalfont\LARGE\bfseries}{\thechapter.}{1em}{}
+% Change distance between chapter header and text
+\titlespacing{\chapter}{0pt}{50pt}{2\baselineskip}
+
+% Adds table captions above the table per default
+\usepackage{float}
+\floatstyle{plaintop}
+\restylefloat{table}
+
+% Adds space between caption and table
+\usepackage[tableposition=top]{caption}
+
+% Adds hyperlinks to references and ToC
+\usepackage{hyperref}
+\hypersetup{hidelinks,linkcolor = black} % Changes the link color to black and hides the hideous red border that usually is created
+
+% If multiple images are to be added, a folder (path) with all the images can be added here 
+\graphicspath{ {Figures/} }
+
+% Separates the first part of the report/thesis in Roman numerals
+\frontmatter
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Starts the document
+\begin{document}
+
+%%% Selects the language to be used for the first couple of pages
+\selectlanguage{english}
+
+%%%%% Adds the title page
+\begin{titlepage}
+	\clearpage\thispagestyle{empty}
+	\centering
+	\vspace{1cm}
+
+	% Titles
+	% Information about the University
+	{\normalsize Internet of Things \\ 
+		Computer Science and Engineering \\
+		Politecnico di Milano \par}
+		\vspace{3cm}
+	{\Huge \textbf{TinyOS First Homework}} \\
+	%\vspace{1cm}
+	%{\large \textbf{xxxxx} \par}
+	\vspace{4cm}
+	{\normalsize Erfan Rahnemoon 10720184 - 943057 \par}
+	\vspace{5cm}
+    
+    \centering \includegraphics[scale=0.4]{logo1.pdf}
+    
+    \vspace{0.5cm}
+		
+	% Set the date
+	{\normalsize 22-03-2020 \par}
+	
+
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Text body starts here!
+%\mainmatter
+
+\chapter{Summary}\label{chapt:sum}
+[\textit{An application which responses to node id of the sender of the packet by three LED provided on the TelosB mote.}]
+\chapter{Description of the Implementation}
+In the beginning, for each mote, a timer is considered which the duration of the timer depends on the ID of the mote for each node with IDs of one, two, and three the period is 1000ms, 333ms, 200ms respectively. Then by each expiration of the timer one packet with the mote ID and the number of the packet that mote is received as a counter variable will be broadcasted to all the nodes in the range of the more's radio. In the next part, a node which received the packet from the sender will turn on the corresponding LED and then will check the counter value of the sender which was in the packet and if the counter is dividable by the ten then all the LEDs of the mote will be turned off for 2 seconds and also the counter of the node will be stopped from counting the received packets. After two seconds, a timer will bring the mote situation to a normal situation. Implementation is available in Github\footnote{\url{https://github.com/rahnemoon/IoT-Projects-University}}.\par
+Finally, there is two logging option first from the COOJA simulator and the last with GDB which both can utilize by the compile option in the Makefile. Also, the project is based on the master branch of the tiny os in the Github\footnote{\url{https://github.com/tinyos/tinyos-main}} and using the other version, because of the incompatibility in the toolchain will cause compile errors or warnings.
+
+
+
+\end{document}
