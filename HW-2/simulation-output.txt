@@ -1,0 +1,757 @@
+********************************************
+*                                          *
+*             TOSSIM Script                *
+*                                          *
+********************************************
+Initializing mac....
+Initializing radio channels....
+    using topology file: topology.txt
+    using noise file: meyer-heavy.txt
+Initializing simulator....
+Activate debug message on channel boot
+Activate debug message on channel sensor
+Activate debug message on channel timer
+Activate debug message on channel radio
+Activate debug message on channel ack
+Activate debug message on channel radio_pack
+Activate debug message on channel radio_send
+Activate debug message on channel radio_rec
+Creating node 0 (master)
+>>>Node 0 boots at time 0 [sec]
+Creating node 1
+>>>Node 1 boots at time 5 [sec]
+Creating radio channels...
+>>>Setting radio channel from node  0  to node  1  with gain  -60.0  dBm
+>>>Setting radio channel from node  1  to node  0  with gain  -60.0  dBm
+Initializing Closest Pattern Matching (CPM)...
+Reading noise model data file: meyer-heavy.txt
+Loading:##Done!
+>>>Creating noise model for node: 0
+>>>Creating noise model for node: 1
+Start simulation with TOSSIM! 
+
+
+
+0:0:0.000000000 DEBUG (0): Application booted on node 0.
+0:0:0.000000010 DEBUG (0): Radio on!
+0:0:0.976562510 DEBUG (0): Request timer fired at 0:0:0.976562510.
+0:0:0.976562510 DEBUG (0): Preparing the  request message... 
+0:0:0.976562510 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:0.976562510 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 1 
+0:0:0.987106271 DEBUG (0): Request packet sent... at time 0:0:0.987106271 
+0:0:0.987106271 DEBUG (0): Request # 1 at time 0:0:0.987106271  not acknowledged 
+0:0:2.939453135 DEBUG (0): Request timer fired at 0:0:2.939453135.
+0:0:2.939453135 DEBUG (0): Preparing the  request message... 
+0:0:2.939453135 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:2.939453135 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 2 
+0:0:2.949951120 DEBUG (0): Request packet sent... at time 0:0:2.949951120 
+0:0:2.949951120 DEBUG (0): Request # 2 at time 0:0:2.949951120  not acknowledged 
+0:0:5.000000000 DEBUG (1): Application booted on node 1.
+0:0:5.000000010 DEBUG (1): Radio on!
+0:0:6.855468760 DEBUG (0): Request timer fired at 0:0:6.855468760.
+0:0:6.855468760 DEBUG (0): Preparing the  request message... 
+0:0:6.855468760 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:6.855468760 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 3 
+0:0:6.866592352 DEBUG (1): Received  request packet at time 0:0:6.866592352
+0:0:6.866592352 DEBUG (1):  Payload length 5 
+0:0:6.866592352 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:6.866760198 DEBUG (0): Request packet sent... at time 0:0:6.866760198 
+Request # 3 at time 0:0:6.866760198 acknowledged 
+0:0:6.868164072 DEBUG (1): Sensor read done 51.937133
+0:0:6.868164072 DEBUG (1): Preparing the  response message... 
+0:0:6.868164072 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:6.868164072 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:6.878967232 DEBUG (0): Received  response packet at time 0:0:6.878967232
+0:0:6.878967232 DEBUG (0):  Payload length 5 
+0:0:6.878967232 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:6.879135077 DEBUG (1): Response packet sent... at time 0:0:6.879135077 
+0:0:6.879135077 DEBUG (1): Response # 0 with 51 at time 0:0:6.879135077 acknowledged
+0:0:8.819335947 DEBUG (0): Request timer fired at 0:0:8.819335947.
+0:0:8.819335947 DEBUG (0): Preparing the  request message... 
+0:0:8.819335947 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:8.819335947 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 4 
+0:0:8.825286840 DEBUG (1): Received  request packet at time 0:0:8.825286840
+0:0:8.825286840 DEBUG (1):  Payload length 5 
+0:0:8.825286840 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:8.825454686 DEBUG (0): Request packet sent... at time 0:0:8.825454686 
+Request # 4 at time 0:0:8.825454686 acknowledged 
+0:0:8.827148447 DEBUG (1): Sensor read done 51.963073
+0:0:8.827148447 DEBUG (1): Preparing the  response message... 
+0:0:8.827148447 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:8.827148447 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:8.838287298 DEBUG (0): Received  response packet at time 0:0:8.838287298
+0:0:8.838287298 DEBUG (0):  Payload length 5 
+0:0:8.838287298 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:8.838455144 DEBUG (1): Response packet sent... at time 0:0:8.838455144 
+0:0:8.838455144 DEBUG (1): Response # 0 with 51 at time 0:0:8.838455144 acknowledged
+0:0:9.801757822 DEBUG (0): Request timer fired at 0:0:9.801757822.
+0:0:9.801757822 DEBUG (0): Preparing the  request message... 
+0:0:9.801757822 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:9.801757822 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 5 
+0:0:9.809799157 DEBUG (1): Received  request packet at time 0:0:9.809799157
+0:0:9.809799157 DEBUG (1):  Payload length 5 
+0:0:9.809799157 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:9.809967003 DEBUG (0): Request packet sent... at time 0:0:9.809967003 
+Request # 5 at time 0:0:9.809967003 acknowledged 
+0:0:9.811523447 DEBUG (1): Sensor read done 51.905089
+0:0:9.811523447 DEBUG (1): Preparing the  response message... 
+0:0:9.811523447 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:9.811523447 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:9.816802957 DEBUG (0): Received  response packet at time 0:0:9.816802957
+0:0:9.816802957 DEBUG (0):  Payload length 5 
+0:0:9.816802957 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:9.816970803 DEBUG (1): Response packet sent... at time 0:0:9.816970803 
+0:0:9.816970803 DEBUG (1): Response # 0 with 51 at time 0:0:9.816970803 acknowledged
+0:0:10.778320322 DEBUG (0): Request timer fired at 0:0:10.778320322.
+0:0:10.778320322 DEBUG (0): Preparing the  request message... 
+0:0:10.778320322 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:10.778320322 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 6 
+0:0:10.788085890 DEBUG (1): Received  request packet at time 0:0:10.788085890
+0:0:10.788085890 DEBUG (1):  Payload length 5 
+0:0:10.788085890 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:10.788253736 DEBUG (0): Request packet sent... at time 0:0:10.788253736 
+Request # 6 at time 0:0:10.788253736 acknowledged 
+0:0:10.789062510 DEBUG (1): Sensor read done 51.778439
+0:0:10.789062510 DEBUG (1): Preparing the  response message... 
+0:0:10.789062510 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:10.789062510 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:10.799529978 DEBUG (0): Received  response packet at time 0:0:10.799529978
+0:0:10.799529978 DEBUG (0):  Payload length 5 
+0:0:10.799529978 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:10.799697823 DEBUG (1): Response packet sent... at time 0:0:10.799697823 
+0:0:10.799697823 DEBUG (1): Response # 0 with 51 at time 0:0:10.799697823 acknowledged
+0:0:11.754882822 DEBUG (0): Request timer fired at 0:0:11.754882822.
+0:0:11.754882822 DEBUG (0): Preparing the  request message... 
+0:0:11.754882822 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:11.754882822 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 7 
+0:0:11.765899603 DEBUG (1): Received  request packet at time 0:0:11.765899603
+0:0:11.765899603 DEBUG (1):  Payload length 5 
+0:0:11.765899603 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:11.766067449 DEBUG (0): Request packet sent... at time 0:0:11.766067449 
+Request # 7 at time 0:0:11.766067449 acknowledged 
+0:0:11.767578135 DEBUG (1): Sensor read done 51.741817
+0:0:11.767578135 DEBUG (1): Preparing the  response message... 
+0:0:11.767578135 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:11.767578135 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:11.771987899 DEBUG (0): Received  response packet at time 0:0:11.771987899
+0:0:11.771987899 DEBUG (0):  Payload length 5 
+0:0:11.771987899 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:11.772155745 DEBUG (1): Response packet sent... at time 0:0:11.772155745 
+0:0:11.772155745 DEBUG (1): Response # 0 with 51 at time 0:0:11.772155745 acknowledged
+0:0:12.731445322 DEBUG (0): Request timer fired at 0:0:12.731445322.
+0:0:12.731445322 DEBUG (0): Preparing the  request message... 
+0:0:12.731445322 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:12.731445322 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 8 
+0:0:12.737152076 DEBUG (1): Received  request packet at time 0:0:12.737152076
+0:0:12.737152076 DEBUG (1):  Payload length 5 
+0:0:12.737152076 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:12.737319922 DEBUG (0): Request packet sent... at time 0:0:12.737319922 
+Request # 8 at time 0:0:12.737319922 acknowledged 
+0:0:12.738281260 DEBUG (1): Sensor read done 51.729610
+0:0:12.738281260 DEBUG (1): Preparing the  response message... 
+0:0:12.738281260 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:12.738281260 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:12.744201635 DEBUG (0): Received  response packet at time 0:0:12.744201635
+0:0:12.744201635 DEBUG (0):  Payload length 5 
+0:0:12.744201635 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:12.744369481 DEBUG (1): Response packet sent... at time 0:0:12.744369481 
+0:0:12.744369481 DEBUG (1): Response # 0 with 51 at time 0:0:12.744369481 acknowledged
+0:0:13.708007822 DEBUG (0): Request timer fired at 0:0:13.708007822.
+0:0:13.708007822 DEBUG (0): Preparing the  request message... 
+0:0:13.708007822 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:13.708007822 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 9 
+0:0:13.714782685 DEBUG (1): Received  request packet at time 0:0:13.714782685
+0:0:13.714782685 DEBUG (1):  Payload length 5 
+0:0:13.714782685 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:13.714950531 DEBUG (0): Request packet sent... at time 0:0:13.714950531 
+Request # 9 at time 0:0:13.714950531 acknowledged 
+0:0:13.715820322 DEBUG (1): Sensor read done 51.911192
+0:0:13.715820322 DEBUG (1): Preparing the  response message... 
+0:0:13.715820322 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:13.715820322 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:13.725753736 DEBUG (0): Received  response packet at time 0:0:13.725753736
+0:0:13.725753736 DEBUG (0):  Payload length 5 
+0:0:13.725753736 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:13.725921581 DEBUG (1): Response packet sent... at time 0:0:13.725921581 
+0:0:13.725921581 DEBUG (1): Response # 0 with 51 at time 0:0:13.725921581 acknowledged
+0:0:14.684570322 DEBUG (0): Request timer fired at 0:0:14.684570322.
+0:0:14.684570322 DEBUG (0): Preparing the  request message... 
+0:0:14.684570322 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:14.684570322 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 10 
+0:0:14.695312447 DEBUG (1): Received  request packet at time 0:0:14.695312447
+0:0:14.695312447 DEBUG (1):  Payload length 5 
+0:0:14.695312447 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:14.695480293 DEBUG (0): Request packet sent... at time 0:0:14.695480293 
+Request # 10 at time 0:0:14.695480293 acknowledged 
+0:0:14.696289072 DEBUG (1): Sensor read done 51.813535
+0:0:14.696289072 DEBUG (1): Preparing the  response message... 
+0:0:14.696289072 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:14.696289072 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:14.702453587 DEBUG (0): Received  response packet at time 0:0:14.702453587
+0:0:14.702453587 DEBUG (0):  Payload length 5 
+0:0:14.702453587 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:14.702621433 DEBUG (1): Response packet sent... at time 0:0:14.702621433 
+0:0:14.702621433 DEBUG (1): Response # 0 with 51 at time 0:0:14.702621433 acknowledged
+0:0:15.661132822 DEBUG (0): Request timer fired at 0:0:15.661132822.
+0:0:15.661132822 DEBUG (0): Preparing the  request message... 
+0:0:15.661132822 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:15.661132822 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 11 
+0:0:15.665176378 DEBUG (1): Received  request packet at time 0:0:15.665176378
+0:0:15.665176378 DEBUG (1):  Payload length 5 
+0:0:15.665176378 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:15.665344223 DEBUG (0): Request packet sent... at time 0:0:15.665344223 
+Request # 11 at time 0:0:15.665344223 acknowledged 
+0:0:15.666992197 DEBUG (1): Sensor read done 51.619745
+0:0:15.666992197 DEBUG (1): Preparing the  response message... 
+0:0:15.666992197 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:15.666992197 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:15.674438443 DEBUG (0): Received  response packet at time 0:0:15.674438443
+0:0:15.674438443 DEBUG (0):  Payload length 5 
+0:0:15.674438443 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:15.674606288 DEBUG (1): Response packet sent... at time 0:0:15.674606288 
+0:0:15.674606288 DEBUG (1): Response # 0 with 51 at time 0:0:15.674606288 acknowledged
+0:0:16.637695322 DEBUG (0): Request timer fired at 0:0:16.637695322.
+0:0:16.637695322 DEBUG (0): Preparing the  request message... 
+0:0:16.637695322 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:16.637695322 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 12 
+0:0:16.642211897 DEBUG (1): Received  request packet at time 0:0:16.642211897
+0:0:16.642211897 DEBUG (1):  Payload length 5 
+0:0:16.642211897 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:16.642379743 DEBUG (0): Request packet sent... at time 0:0:16.642379743 
+Request # 12 at time 0:0:16.642379743 acknowledged 
+0:0:16.643554697 DEBUG (1): Sensor read done 51.705196
+0:0:16.643554697 DEBUG (1): Preparing the  response message... 
+0:0:16.643554697 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:16.643554697 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:16.647460924 DEBUG (0): Received  response packet at time 0:0:16.647460924
+0:0:16.647460924 DEBUG (0):  Payload length 5 
+0:0:16.647460924 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:16.647628770 DEBUG (1): Response packet sent... at time 0:0:16.647628770 
+0:0:16.647628770 DEBUG (1): Response # 0 with 51 at time 0:0:16.647628770 acknowledged
+0:0:17.614257822 DEBUG (0): Request timer fired at 0:0:17.614257822.
+0:0:17.614257822 DEBUG (0): Preparing the  request message... 
+0:0:17.614257822 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:17.614257822 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 13 
+0:0:17.622405968 DEBUG (1): Received  request packet at time 0:0:17.622405968
+0:0:17.622405968 DEBUG (1):  Payload length 5 
+0:0:17.622405968 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:17.622573814 DEBUG (0): Request packet sent... at time 0:0:17.622573814 
+Request # 13 at time 0:0:17.622573814 acknowledged 
+0:0:17.624023447 DEBUG (1): Sensor read done 51.421378
+0:0:17.624023447 DEBUG (1): Preparing the  response message... 
+0:0:17.624023447 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:17.624023447 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:17.629455544 DEBUG (0): Received  response packet at time 0:0:17.629455544
+0:0:17.629455544 DEBUG (0):  Payload length 5 
+0:0:17.629455544 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:17.629623390 DEBUG (1): Response packet sent... at time 0:0:17.629623390 
+0:0:17.629623390 DEBUG (1): Response # 0 with 51 at time 0:0:17.629623390 acknowledged
+0:0:18.590820322 DEBUG (0): Request timer fired at 0:0:18.590820322.
+0:0:18.590820322 DEBUG (0): Preparing the  request message... 
+0:0:18.590820322 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:18.590820322 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 14 
+0:0:18.601074168 DEBUG (1): Received  request packet at time 0:0:18.601074168
+0:0:18.601074168 DEBUG (1):  Payload length 5 
+0:0:18.601074168 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:18.601242014 DEBUG (0): Request packet sent... at time 0:0:18.601242014 
+Request # 14 at time 0:0:18.601242014 acknowledged 
+0:0:18.602539072 DEBUG (1): Sensor read done 51.271839
+0:0:18.602539072 DEBUG (1): Preparing the  response message... 
+0:0:18.602539072 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:18.602539072 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:18.612075760 DEBUG (0): Received  response packet at time 0:0:18.612075760
+0:0:18.612075760 DEBUG (0):  Payload length 5 
+0:0:18.612075760 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:18.612243605 DEBUG (1): Response packet sent... at time 0:0:18.612243605 
+0:0:18.612243605 DEBUG (1): Response # 0 with 51 at time 0:0:18.612243605 acknowledged
+0:0:19.567382822 DEBUG (0): Request timer fired at 0:0:19.567382822.
+0:0:19.567382822 DEBUG (0): Preparing the  request message... 
+0:0:19.567382822 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:19.567382822 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 15 
+0:0:19.569534299 DEBUG (1): Received  request packet at time 0:0:19.569534299
+0:0:19.569534299 DEBUG (1):  Payload length 5 
+0:0:19.569534299 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:19.569702144 DEBUG (0): Request packet sent... at time 0:0:19.569702144 
+Request # 15 at time 0:0:19.569702144 acknowledged 
+0:0:19.571289072 DEBUG (1): Sensor read done 51.216907
+0:0:19.571289072 DEBUG (1): Preparing the  response message... 
+0:0:19.571289072 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:19.571289072 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:19.573379514 DEBUG (0): Received  response packet at time 0:0:19.573379514
+0:0:19.573379514 DEBUG (0):  Payload length 5 
+0:0:19.573379514 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:19.573547360 DEBUG (1): Response packet sent... at time 0:0:19.573547360 
+0:0:19.573547360 DEBUG (1): Response # 0 with 51 at time 0:0:19.573547360 acknowledged
+0:0:20.543945322 DEBUG (0): Request timer fired at 0:0:20.543945322.
+0:0:20.543945322 DEBUG (0): Preparing the  request message... 
+0:0:20.543945322 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:20.543945322 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 16 
+0:0:20.547683704 DEBUG (1): Received  request packet at time 0:0:20.547683704
+0:0:20.547683704 DEBUG (1):  Payload length 5 
+0:0:20.547683704 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:20.547851549 DEBUG (0): Request packet sent... at time 0:0:20.547851549 
+Request # 16 at time 0:0:20.547851549 acknowledged 
+0:0:20.548828135 DEBUG (1): Sensor read done 51.287098
+0:0:20.548828135 DEBUG (1): Preparing the  response message... 
+0:0:20.548828135 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:20.548828135 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:20.552185049 DEBUG (0): Received  response packet at time 0:0:20.552185049
+0:0:20.552185049 DEBUG (0):  Payload length 5 
+0:0:20.552185049 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:20.552352894 DEBUG (1): Response packet sent... at time 0:0:20.552352894 
+0:0:20.552352894 DEBUG (1): Response # 0 with 51 at time 0:0:20.552352894 acknowledged
+0:0:21.520507822 DEBUG (0): Request timer fired at 0:0:21.520507822.
+0:0:21.520507822 DEBUG (0): Preparing the  request message... 
+0:0:21.520507822 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:21.520507822 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 17 
+0:0:21.524642930 DEBUG (1): Received  request packet at time 0:0:21.524642930
+0:0:21.524642930 DEBUG (1):  Payload length 5 
+0:0:21.524642930 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:21.524810775 DEBUG (0): Request packet sent... at time 0:0:21.524810775 
+Request # 17 at time 0:0:21.524810775 acknowledged 
+0:0:21.526367197 DEBUG (1): Sensor read done 51.055161
+0:0:21.526367197 DEBUG (1): Preparing the  response message... 
+0:0:21.526367197 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:21.526367197 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:21.535232502 DEBUG (0): Received  response packet at time 0:0:21.535232502
+0:0:21.535232502 DEBUG (0):  Payload length 5 
+0:0:21.535232502 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:21.535400347 DEBUG (1): Response packet sent... at time 0:0:21.535400347 
+0:0:21.535400347 DEBUG (1): Response # 0 with 51 at time 0:0:21.535400347 acknowledged
+0:0:22.497070322 DEBUG (0): Request timer fired at 0:0:22.497070322.
+0:0:22.497070322 DEBUG (0): Preparing the  request message... 
+0:0:22.497070322 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:22.497070322 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 18 
+0:0:22.508193914 DEBUG (1): Received  request packet at time 0:0:22.508193914
+0:0:22.508193914 DEBUG (1):  Payload length 5 
+0:0:22.508193914 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:22.508361760 DEBUG (0): Request packet sent... at time 0:0:22.508361760 
+Request # 18 at time 0:0:22.508361760 acknowledged 
+0:0:22.509765635 DEBUG (1): Sensor read done 51.013962
+0:0:22.509765635 DEBUG (1): Preparing the  response message... 
+0:0:22.509765635 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:22.509765635 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 51 
+0:0:22.518936113 DEBUG (0): Received  response packet at time 0:0:22.518936113
+0:0:22.518936113 DEBUG (0):  Payload length 5 
+0:0:22.518936113 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 51 
+0:0:22.519103959 DEBUG (1): Response packet sent... at time 0:0:22.519103959 
+0:0:22.519103959 DEBUG (1): Response # 0 with 51 at time 0:0:22.519103959 acknowledged
+0:0:23.473632822 DEBUG (0): Request timer fired at 0:0:23.473632822.
+0:0:23.473632822 DEBUG (0): Preparing the  request message... 
+0:0:23.473632822 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:23.473632822 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 19 
+0:0:23.477676378 DEBUG (1): Received  request packet at time 0:0:23.477676378
+0:0:23.477676378 DEBUG (1):  Payload length 5 
+0:0:23.477676378 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:23.477844223 DEBUG (0): Request packet sent... at time 0:0:23.477844223 
+Request # 19 at time 0:0:23.477844223 acknowledged 
+0:0:23.479492197 DEBUG (1): Sensor read done 50.940719
+0:0:23.479492197 DEBUG (1): Preparing the  response message... 
+0:0:23.479492197 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:23.479492197 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 50 
+0:0:23.485794040 DEBUG (0): Received  response packet at time 0:0:23.485794040
+0:0:23.485794040 DEBUG (0):  Payload length 5 
+0:0:23.485794040 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 50 
+0:0:23.485961886 DEBUG (1): Response packet sent... at time 0:0:23.485961886 
+0:0:23.485961886 DEBUG (1): Response # 0 with 50 at time 0:0:23.485961886 acknowledged
+0:0:24.450195322 DEBUG (0): Request timer fired at 0:0:24.450195322.
+0:0:24.450195322 DEBUG (0): Preparing the  request message... 
+0:0:24.450195322 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:24.450195322 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 20 
+0:0:24.456451389 DEBUG (1): Received  request packet at time 0:0:24.456451389
+0:0:24.456451389 DEBUG (1):  Payload length 5 
+0:0:24.456451389 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:24.456619235 DEBUG (0): Request packet sent... at time 0:0:24.456619235 
+Request # 20 at time 0:0:24.456619235 acknowledged 
+0:0:24.458007822 DEBUG (1): Sensor read done 50.788128
+0:0:24.458007822 DEBUG (1): Preparing the  response message... 
+0:0:24.458007822 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:24.458007822 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 50 
+0:0:24.460037229 DEBUG (0): Received  response packet at time 0:0:24.460037229
+0:0:24.460037229 DEBUG (0):  Payload length 5 
+0:0:24.460037229 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 50 
+0:0:24.460205075 DEBUG (1): Response packet sent... at time 0:0:24.460205075 
+0:0:24.460205075 DEBUG (1): Response # 0 with 50 at time 0:0:24.460205075 acknowledged
+0:0:25.426757822 DEBUG (0): Request timer fired at 0:0:25.426757822.
+0:0:25.426757822 DEBUG (0): Preparing the  request message... 
+0:0:25.426757822 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:25.426757822 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 21 
+0:0:25.429336542 DEBUG (1): Received  request packet at time 0:0:25.429336542
+0:0:25.429336542 DEBUG (1):  Payload length 5 
+0:0:25.429336542 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:25.429504388 DEBUG (0): Request packet sent... at time 0:0:25.429504388 
+Request # 21 at time 0:0:25.429504388 acknowledged 
+0:0:25.430664072 DEBUG (1): Sensor read done 50.820172
+0:0:25.430664072 DEBUG (1): Preparing the  response message... 
+0:0:25.430664072 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:25.430664072 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 50 
+0:0:25.440566968 DEBUG (0): Received  response packet at time 0:0:25.440566968
+0:0:25.440566968 DEBUG (0):  Payload length 5 
+0:0:25.440566968 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 50 
+0:0:25.440734814 DEBUG (1): Response packet sent... at time 0:0:25.440734814 
+0:0:25.440734814 DEBUG (1): Response # 0 with 50 at time 0:0:25.440734814 acknowledged
+0:0:26.403320322 DEBUG (0): Request timer fired at 0:0:26.403320322.
+0:0:26.403320322 DEBUG (0): Preparing the  request message... 
+0:0:26.403320322 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:26.403320322 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 22 
+0:0:26.407058704 DEBUG (1): Received  request packet at time 0:0:26.407058704
+0:0:26.407058704 DEBUG (1):  Payload length 5 
+0:0:26.407058704 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:26.407226549 DEBUG (0): Request packet sent... at time 0:0:26.407226549 
+Request # 22 at time 0:0:26.407226549 acknowledged 
+0:0:26.408203135 DEBUG (1): Sensor read done 50.543984
+0:0:26.408203135 DEBUG (1): Preparing the  response message... 
+0:0:26.408203135 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:26.408203135 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 50 
+0:0:26.419311468 DEBUG (0): Received  response packet at time 0:0:26.419311468
+0:0:26.419311468 DEBUG (0):  Payload length 5 
+0:0:26.419311468 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 50 
+0:0:26.419479314 DEBUG (1): Response packet sent... at time 0:0:26.419479314 
+0:0:26.419479314 DEBUG (1): Response # 0 with 50 at time 0:0:26.419479314 acknowledged
+0:0:27.379882822 DEBUG (0): Request timer fired at 0:0:27.379882822.
+0:0:27.379882822 DEBUG (0): Preparing the  request message... 
+0:0:27.379882822 DEBUG (0): Request packet passed to lower layer successfully!
+0:0:27.379882822 DEBUG (0): >>>Request packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 1 
+ 		 data: 0 
+		 counter: 23 
+0:0:27.389343216 DEBUG (1): Received  request packet at time 0:0:27.389343216
+0:0:27.389343216 DEBUG (1):  Payload length 5 
+0:0:27.389343216 DEBUG (1): >>>Pack 
+		 Payload Received
+		 type: 1 
+ 		 data: 0 
+0:0:27.389511062 DEBUG (0): Request packet sent... at time 0:0:27.389511062 
+Request # 23 at time 0:0:27.389511062 acknowledged 
+0:0:27.390625010 DEBUG (1): Sensor read done 50.574502
+0:0:27.390625010 DEBUG (1): Preparing the  response message... 
+0:0:27.390625010 DEBUG (1): Response packet passed to lower layer successfully!
+0:0:27.390625010 DEBUG (1): >>>Response packet
+ 	 Payload length 5 
+	 Payload Sent
+		 type: 2 
+ 		 data: 50 
+0:0:27.396118142 DEBUG (0): Received  response packet at time 0:0:27.396118142
+0:0:27.396118142 DEBUG (0):  Payload length 5 
+0:0:27.396118142 DEBUG (0): >>>Pack 
+		 Payload Received
+		 type: 2 
+ 		 data: 50 
+0:0:27.396285987 DEBUG (1): Response packet sent... at time 0:0:27.396285987 
+0:0:27.396285987 DEBUG (1): Response # 0 with 50 at time 0:0:27.396285987 acknowledged
+
+
+
+Simulation finished!
