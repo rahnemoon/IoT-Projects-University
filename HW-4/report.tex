@@ -1,0 +1,116 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Template for lab reports
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sets the document class for the document
+% Openany is added to remove the book style of starting every new chapter on an odd page (not needed for reports)
+\documentclass[10pt,english, openany]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Loading packages that alter the style
+\usepackage[]{graphicx}
+\usepackage[]{color}
+\usepackage{alltt}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+% Set page margins
+\usepackage[top=100pt,bottom=100pt,left=68pt,right=66pt]{geometry}
+
+% Package used for placeholder text
+\usepackage{lipsum}
+
+% Prevents LaTeX from filling out a page to the bottom
+\raggedbottom
+
+% Adding both languages
+\usepackage[english, italian]{babel}
+
+% All page numbers positioned at the bottom of the page
+\usepackage{fancyhdr}
+\fancyhf{} % clear all header and footers
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt} % remove the header rule
+\pagestyle{fancy}
+
+% Changes the style of chapter headings
+\usepackage{titlesec}
+\titleformat{\chapter}
+   {\normalfont\LARGE\bfseries}{\thechapter.}{1em}{}
+% Change distance between chapter header and text
+\titlespacing{\chapter}{0pt}{50pt}{2\baselineskip}
+
+% Adds table captions above the table per default
+\usepackage{float}
+\floatstyle{plaintop}
+\restylefloat{table}
+
+% Adds space between caption and table
+\usepackage[tableposition=top]{caption}
+
+% Adds hyperlinks to references and ToC
+\usepackage{hyperref}
+\hypersetup{hidelinks,linkcolor = black} % Changes the link color to black and hides the hideous red border that usually is created
+
+% If multiple images are to be added, a folder (path) with all the images can be added here 
+\graphicspath{ {Figures/} }
+
+% Separates the first part of the report/thesis in Roman numerals
+\frontmatter
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Starts the document
+\begin{document}
+
+%%% Selects the language to be used for the first couple of pages
+\selectlanguage{english}
+
+%%%%% Adds the title page
+\begin{titlepage}
+	\clearpage\thispagestyle{empty}
+	\centering
+	\vspace{1cm}
+
+	% Titles
+	% Information about the University
+	{\normalsize Internet of Things \\ 
+		Computer Science and Engineering \\
+		Politecnico di Milano \par}
+		\vspace{3cm}
+	{\Huge \textbf{Fourth Homework (Red Node)}} \\
+	%\vspace{1cm}
+	%{\large \textbf{xxxxx} \par}
+	\vspace{4cm}
+	{\normalsize Erfan Rahnemoon 10720184 - 943057 \par}
+	\vspace{5cm}
+    
+    \centering \includegraphics[scale=0.4]{logo1.pdf}
+    
+    \vspace{0.5cm}
+		
+	% Set the date
+	{\normalsize 27-05-2020 \par}
+	
+
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Text body starts here!
+%\mainmatter
+
+\chapter{Summary}\label{chapt:sum}
+[\textit{Creating a middleware platform for the assumptive IoT facility in a factory in which the homework tries to recreate the traffic that is saved in a file.}]
+\chapter{Description of the Implementation}
+First, we need an injector or trigger to activate the File node to read the traffic file. Then we pass the output of this node to a function node to filter out the messages that not contain the "Publish Message" string. After this, we separate the remaining messages based on four provided paths for the topic and group them base on whether the message is about "PLC" or "Hydraulic valve", and this is done by switch node. 
+In the next part, two CSV node is used to convert the string line that represents a message to a JavaScript object. Furthermore, two function nodes will parse the payload of messages for each group to convert it from Hex to string and handle messages containing multiple "Publish Message" to use the correct one and add some field to message related to MQTT like the topic.
+Lastly, we use a rate limiter node to send one message per minute to obey the limitation of the MQTT broker we use.  We use the MQTT OUT node to send the MQTT messages to the Thingspeak (broker), but first, we configure it with the server address of "mqtt.thingspeak.com", and User ID and MQTT API Key from Thingspeak as username and password respectively.\par
+
+Because the data that comes from the considered topics are from different sensors, instead of two fields, each field represents a sensor, and general topics become channels in the Thingspeak, so we have two channel with different fields. Besides this, we merge the same sensor data to show them as a unique sensor; therefore, there is no averaging or maximum or minimum of data.\par
+
+Eventually, we tried to use all the features of the Thingspeak dashboard, which the PLC\footnote{\url{https://thingspeak.com/channels/1068798}} and Hydraulic valve\footnote{\url{https://thingspeak.com/channels/1068838}} dashboard are accessible through the links in the footnote. Also, the export of the Red Node's flow is in the GitHub\footnote{\url{https://github.com/rahnemoon/IoT-Projects-University}} repository, and the function node's code is documented inside them.
+
+\end{document}
