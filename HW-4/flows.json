@@ -1,0 +1,356 @@
+[
+    {
+        "id": "d9295622.eb31d",
+        "type": "tab",
+        "label": "HW-4",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9e329ed2.0ab72",
+        "type": "inject",
+        "z": "d9295622.eb31d",
+        "name": "",
+        "topic": "starter",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 200,
+        "wires": [
+            [
+                "5c98f061.18876"
+            ]
+        ]
+    },
+    {
+        "id": "a47ff69e.554628",
+        "type": "csv",
+        "z": "d9295622.eb31d",
+        "name": "Convert lines to CSV format",
+        "sep": " ",
+        "hdrin": "",
+        "hdrout": "",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": false,
+        "x": 1420,
+        "y": 160,
+        "wires": [
+            [
+                "651f16c2.5825e",
+                "9d008f51.621c7"
+            ]
+        ]
+    },
+    {
+        "id": "7387afe1.bbc1a",
+        "type": "switch",
+        "z": "d9295622.eb31d",
+        "name": "Seperate messages based on pattern",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "factory/department1/section1/plc",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "factory/department3/section3/plc",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "factory/department1/section1/hydraulic_valve",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "factory/department3/section3/hydraulic_valve",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 1030,
+        "y": 200,
+        "wires": [
+            [
+                "a47ff69e.554628"
+            ],
+            [
+                "a47ff69e.554628"
+            ],
+            [
+                "69a64d70.8291a4"
+            ],
+            [
+                "69a64d70.8291a4"
+            ]
+        ]
+    },
+    {
+        "id": "5c98f061.18876",
+        "type": "file in",
+        "z": "d9295622.eb31d",
+        "name": "Reading the Traffic file",
+        "filename": "/home/Linman/traffic.csv",
+        "format": "lines",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "ascii",
+        "x": 320,
+        "y": 200,
+        "wires": [
+            [
+                "759a3f97.303768",
+                "1845917c.79a71f"
+            ]
+        ]
+    },
+    {
+        "id": "69a64d70.8291a4",
+        "type": "csv",
+        "z": "d9295622.eb31d",
+        "name": "Convert lines to CSV format",
+        "sep": " ",
+        "hdrin": "",
+        "hdrout": "",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": false,
+        "x": 1420,
+        "y": 240,
+        "wires": [
+            [
+                "692ca87f.f3fe7",
+                "449a4016.6c76c8"
+            ]
+        ]
+    },
+    {
+        "id": "651f16c2.5825e",
+        "type": "debug",
+        "z": "d9295622.eb31d",
+        "name": "Output of CSV converter",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1410,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "692ca87f.f3fe7",
+        "type": "debug",
+        "z": "d9295622.eb31d",
+        "name": "Output of CSV converter",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1410,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "9d008f51.621c7",
+        "type": "function",
+        "z": "d9295622.eb31d",
+        "name": "Prepare data for send",
+        "func": "function find_pattern(element) {\n   return (element.match(\"factory/department1/section1/plc\")) ||\n   (element.match(\"factory/department3/section3/plc\"));\n}\n// Check the messages with multiple data to find the relatied data \n// to the pattern\nconst paylength = Object.keys(msg.payload).length;\nlet i;\nlet field;\nlet index_wanted = [];\nlet list_msg = [];\nfor (i = 0; i < paylength; i++) {\n    field = msg.payload[Object.keys(msg.payload)[i]];\n    if (field.match('factory\\/department[0-9]\\/section[0-9]')){\n        if(!list_msg.includes(field))\n        list_msg.push(field);\n    }\n}\n// Finding the place of the wanted data\nlet index_place = list_msg.findIndex(find_pattern);\nif (! list_msg.includes(index_place)){\n    index_wanted.push(index_place)\n}\n// Exfilter the wanted data and prepare it\nlet data = msg.payload[Object.keys(msg.payload)[paylength-1]];\nif (data.includes(',')){\n    const list_data = data.split(',');\n    let selected_data = [];\n    for (i = 0; i < index_wanted.length; i++) {\n        selected_data.push(list_data[index_wanted[i]]);\n    }\n    // If the number of wanted data is more than one use ',' to concat them.\n    if (selected_data.length > 2){\n        data=selected_data.join('2C');\n    }else{\n        data = selected_data[0];\n    }\n}\n// Create the structure of the message to be send to Thingspeak MQTT API\n// and parse the hex data to string data\nconst buf = Buffer.from(data, 'hex');\nlet obj = JSON.parse(buf.toString('ascii'));\nmsg.payload = {};\nmsg.payload = obj['value'];\n\nconst channel_id = '1068798';\nconst WAPI = 'TB87I4AD79FA694N';\nlet field_name; \nswitch(obj['type']){\n    case \"temperature\":\n        field_name = 'field1';\n        break;\n    case \"Motion\":\n        field_name = 'field2';\n        break;\n    case \"robotic arm\":\n        field_name = 'field3';\n        break;\n    case \"moisture\":\n        field_name = 'field4';\n        break;\n    case \"light\":\n        field_name = 'field5';\n        break;\n    default:\n        msg.topic = \"\";\n}\nmsg.topic = 'channels/' + channel_id + '/publish/fields/' + field_name + '/' +\nWAPI;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1840,
+        "y": 160,
+        "wires": [
+            [
+                "b3b326dc.7c811",
+                "6e21e89d.5185c8"
+            ]
+        ]
+    },
+    {
+        "id": "b3b326dc.7c811",
+        "type": "debug",
+        "z": "d9295622.eb31d",
+        "name": "Output of prepration process",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1860,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "449a4016.6c76c8",
+        "type": "function",
+        "z": "d9295622.eb31d",
+        "name": "Prepare data for send",
+        "func": "function find_pattern(element) {\n    \n   return (element.match('factory\\/department1\\/section1\\/hydraulic_valve')) ||\n   (element.match('factory\\/department3\\/section3\\/hydraulic_valve'));\n}\n\n// Check the messages with multiple data to find the relatied data \n// to the pattern\nconst paylength = Object.keys(msg.payload).length;\nlet i;\nlet field;\nlet index_wanted = [];\nlet list_msg = [];\nfor (i = 0; i < paylength; i++) {\n    field = msg.payload[Object.keys(msg.payload)[i]];\n    if (field.match('factory\\/department[0-9]\\/section[0-9]')){\n        if(!list_msg.includes(field))\n        list_msg.push(field);\n    }\n}\n// Finding the place of the wanted data\nlet index_place = list_msg.findIndex(find_pattern);\nif (! list_msg.includes(index_place)){\n    index_wanted.push(index_place)\n}\n// Exfilter the wanted data and prepare it\nlet data = msg.payload[Object.keys(msg.payload)[paylength-1]];\nif (data.includes(',')){\n    const list_data = data.split(',');\n    let selected_data = [];\n    for (i = 0; i < index_wanted.length; i++) {\n        selected_data.push(list_data[index_wanted[i]]);\n    }\n    // If the number of wanted data is more than one use ',' to concat them.\n    if (selected_data.length > 2){\n        data=selected_data.join('2C');\n    }else{\n        data = selected_data[0];\n    }\n}\n// Create the structure of the message to be send to Thingspeak MQTT API\n// and parse the hex data to string data\nconst buf = Buffer.from(data, 'hex');\nlet obj = JSON.parse(buf.toString('ascii'));\nmsg.payload = {};\nmsg.payload = obj['value'];\n\nconst channel_id = '1068838';\nconst WAPI = '4SDZQXZLIY6M8QQY';\nlet field_name; \nswitch(obj['type']){\n    case \"temperature\":\n        field_name = 'field1';\n        break;\n    case \"humidity\":\n        field_name = 'field2';\n        break;\n    case \"moisture\":\n        field_name = 'field3';\n        break;\n    case \"Motion\":\n        field_name = 'field4';\n        break;\n    default:\n        msg.topic = \"\";\n}\nmsg.topic = 'channels/' + channel_id + '/publish/fields/' + field_name + '/' +\nWAPI;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1840,
+        "y": 240,
+        "wires": [
+            [
+                "911464bd.b83aa",
+                "6e21e89d.5185c8"
+            ]
+        ]
+    },
+    {
+        "id": "911464bd.b83aa",
+        "type": "debug",
+        "z": "d9295622.eb31d",
+        "name": "Output of prepration process",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1860,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "759a3f97.303768",
+        "type": "debug",
+        "z": "d9295622.eb31d",
+        "name": "Output of file",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 630,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "1845917c.79a71f",
+        "type": "function",
+        "z": "d9295622.eb31d",
+        "name": "Filter Publish Messages",
+        "func": "if (msg.payload.includes('Publish Message')){\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 670,
+        "y": 200,
+        "wires": [
+            [
+                "2835f4a8.64c544",
+                "7387afe1.bbc1a"
+            ]
+        ]
+    },
+    {
+        "id": "2835f4a8.64c544",
+        "type": "debug",
+        "z": "d9295622.eb31d",
+        "name": "Output of filter",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 960,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "4facab2c.3caa3c",
+        "type": "mqtt out",
+        "z": "d9295622.eb31d",
+        "name": "MQTT send to broker Thingspeak",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "56167145.15cfd8",
+        "x": 2580,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "6e21e89d.5185c8",
+        "type": "delay",
+        "z": "d9295622.eb31d",
+        "name": "Rate limiter (1msg/min)",
+        "pauseType": "rate",
+        "timeout": "1",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 2190,
+        "y": 200,
+        "wires": [
+            [
+                "e6597668.8ed2",
+                "4facab2c.3caa3c"
+            ]
+        ]
+    },
+    {
+        "id": "e6597668.8ed2",
+        "type": "debug",
+        "z": "d9295622.eb31d",
+        "name": "Message structure that is send to Thingspeak",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 2610,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "56167145.15cfd8",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Thingspeak",
+        "broker": "mqtt.thingspeak.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
