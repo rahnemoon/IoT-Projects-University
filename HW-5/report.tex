@@ -1,0 +1,114 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Template for lab reports
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sets the document class for the document
+% Openany is added to remove the book style of starting every new chapter on an odd page (not needed for reports)
+\documentclass[10pt,english, openany]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Loading packages that alter the style
+\usepackage[]{graphicx}
+\usepackage[]{color}
+\usepackage{alltt}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+% Set page margins
+\usepackage[top=100pt,bottom=100pt,left=68pt,right=66pt]{geometry}
+
+% Package used for placeholder text
+\usepackage{lipsum}
+
+% Prevents LaTeX from filling out a page to the bottom
+\raggedbottom
+
+% Adding both languages
+\usepackage[english, italian]{babel}
+
+% All page numbers positioned at the bottom of the page
+\usepackage{fancyhdr}
+\fancyhf{} % clear all header and footers
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt} % remove the header rule
+\pagestyle{fancy}
+
+% Changes the style of chapter headings
+\usepackage{titlesec}
+\titleformat{\chapter}
+   {\normalfont\LARGE\bfseries}{\thechapter.}{1em}{}
+% Change distance between chapter header and text
+\titlespacing{\chapter}{0pt}{50pt}{2\baselineskip}
+
+% Adds table captions above the table per default
+\usepackage{float}
+\floatstyle{plaintop}
+\restylefloat{table}
+
+% Adds space between caption and table
+\usepackage[tableposition=top]{caption}
+
+% Adds hyperlinks to references and ToC
+\usepackage{hyperref}
+\hypersetup{hidelinks,linkcolor = black} % Changes the link color to black and hides the hideous red border that usually is created
+
+% If multiple images are to be added, a folder (path) with all the images can be added here 
+\graphicspath{ {Figures/} }
+
+% Separates the first part of the report/thesis in Roman numerals
+\frontmatter
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Starts the document
+\begin{document}
+
+%%% Selects the language to be used for the first couple of pages
+\selectlanguage{english}
+
+%%%%% Adds the title page
+\begin{titlepage}
+	\clearpage\thispagestyle{empty}
+	\centering
+	\vspace{1cm}
+
+	% Titles
+	% Information about the University
+	{\normalsize Internet of Things \\ 
+		Computer Science and Engineering \\
+		Politecnico di Milano \par}
+		\vspace{3cm}
+	{\Huge \textbf{Fifth Homework (Complete Scenario)}} \\
+	%\vspace{1cm}
+	%{\large \textbf{xxxxx} \par}
+	\vspace{4cm}
+	{\normalsize Erfan Rahnemoon 10720184 - 943057 \par}
+	\vspace{5cm}
+    
+    \centering \includegraphics[scale=0.4]{logo1.pdf}
+    
+    \vspace{0.5cm}
+		
+	% Set the date
+	{\normalsize 31-05-2020 \par}
+	
+
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Text body starts here!
+%\mainmatter
+
+\chapter{Summary}\label{chapt:sum}
+[\textit{An end-to-end Internet of things scenario using TinyOS for field sensors and Node-Red as middleware with Thingspeak as MQTT broker and dashboard.}]
+\chapter{Description of the Implementation}
+First, we made a TinyOS application, which in the sender nodes will send random integer values between 0 to 100 via taking the remaining of the result of the random function by 101 and the node ID as a static topic. Then they will send this information to the node one by setting the node One's ID as a receiver in the "AMSend.send" function. When the data received by node one, it will be printed in the console log of the COOJA, which next will be forwarded to node-red flow because the node one has a serial socket server.\par
+We connect to node one by TCP-in node in the red node's flow, configured to connect to the localhost, and provided socket by node one to get the messages. Then the messages will be parsed by Function node, and if the value of them is bigger than 70, they will be dropped. Subsequently, the messages' topic will be changed to the corresponding path that messages should be sent to Thingsboard, which included the channel ID and the Write API Key. After this node, we used a rate limiter node to observe the timeout between two consecutive messages sent to Thingsboard. The node limiter is configured to send one packet per 30 seconds, and it will do this in turns for each topic, meaning after 30 seconds, one message will be sent from a topic, and after another 30 seconds, the next message is from another topic. The reason behind the in-turn sending is the racing condition between two topics, which after 30 seconds, one packet from each topic is ready for the send, but Thingspeak will receive only one because of the limitation we spoke about it. To avoid one of the topics having more data entry than another, we used the in turn sending. Finally, messages will be sent to Thingspeak by MQTT-out node, configured with the host of ThingsBoard and UserID, and MQTT API key from Thingspeak as username and password.\par
+Lastly, the field-one chart and gauge represent the numbers sent by node two, and field-two chart and gauge is for node-three. 
+
+The Thingspeak dashboard\footnote{\url{https://thingspeak.com/channels/1071951}} is accessible via the link in the footnote, and the source of the homework is available in GitHub\footnote{\url{https://github.com/rahnemoon/IoT-Projects-University}} repository.
+
+\end{document}
