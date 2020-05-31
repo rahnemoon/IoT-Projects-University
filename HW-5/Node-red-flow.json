@@ -1,0 +1,149 @@
+[
+    {
+        "id": "b5d1af96.0416f8",
+        "type": "tab",
+        "label": "HW5",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "cc2464d4.c66878",
+        "type": "tcp in",
+        "z": "b5d1af96.0416f8",
+        "name": "Connected to node one",
+        "server": "client",
+        "host": "localhost",
+        "port": "60001",
+        "datamode": "stream",
+        "datatype": "utf8",
+        "newline": "\\n",
+        "topic": "",
+        "base64": false,
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "dc6599b0.b83fc",
+                "798376b8.8b3fe8"
+            ]
+        ]
+    },
+    {
+        "id": "dc6599b0.b83fc",
+        "type": "debug",
+        "z": "b5d1af96.0416f8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 130,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "798376b8.8b3fe8",
+        "type": "function",
+        "z": "b5d1af96.0416f8",
+        "name": "Filter and prepare messages for send",
+        "func": "let payload = msg.payload;\npayload = payload.split(\"    \");\nif(parseInt(payload[2]) < 70){\n    msg.payload = payload[2];\n    const channel_id = '1071951';\n    const WAPI = 'I2WN1C0UII8XZ2RN';\n    let field_name; \n    switch(payload[1]){\n        case \"2\":\n            field_name = 'field1';\n            break;\n        case \"3\":\n            field_name = 'field2';\n            break;\n        default:\n            msg.topic = \"\";\n    }\n    msg.topic = 'channels/' + channel_id + '/publish/fields/' + field_name + '/' +\n    WAPI;\n    return msg;\n}else{\n    return;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 200,
+        "wires": [
+            [
+                "80e6f434.2a4fb8",
+                "7b405e68.2fc248"
+            ]
+        ]
+    },
+    {
+        "id": "2c263979.3381ee",
+        "type": "debug",
+        "z": "b5d1af96.0416f8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 850,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "80e6f434.2a4fb8",
+        "type": "delay",
+        "z": "b5d1af96.0416f8",
+        "name": "",
+        "pauseType": "queue",
+        "timeout": "30",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "30",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 860,
+        "y": 200,
+        "wires": [
+            [
+                "2c263979.3381ee",
+                "65f729c.6ac7cd8"
+            ]
+        ]
+    },
+    {
+        "id": "7b405e68.2fc248",
+        "type": "debug",
+        "z": "b5d1af96.0416f8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 470,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "65f729c.6ac7cd8",
+        "type": "mqtt out",
+        "z": "b5d1af96.0416f8",
+        "name": "MQTT Broker send to Thingspeak",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "3f027406.b51edc",
+        "x": 1200,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "3f027406.b51edc",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "mqtt.thingspeak.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
